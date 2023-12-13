@@ -8,10 +8,10 @@ import br.iff.bji.patrimony.api.entity.TypeOfEvent;
 
 public interface TypeOfEventRepository extends JpaRepository<TypeOfEvent, Integer>{ //o que é esse integer??
 	
-	public boolean existByDescription(String description);
+	public boolean existsByDescription(String description);
 	
 	public List<TypeOfEvent> findByDescription(String description);
 	
-	@Query("select max(d.id) from Description d")
+	@Query("select max(toe.id) from TypeOfEvent toe")
 	public Integer findMaxId();
 }

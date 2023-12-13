@@ -1,12 +1,9 @@
 package br.iff.bji.patrimony.api.service;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.iff.bji.patrimony.api.entity.TypeOfEvent;
 import br.iff.bji.patrimony.api.repository.TypeOfEventRepository;
 
@@ -18,9 +15,8 @@ public class TypeOfEventService {
 	
 	@Transactional
 	public String createTypeOfEvent(TypeOfEvent typeOfEvent ) {
-		
 		try {
-			if(!typeOfEventRepository.existByDescription(typeOfEvent.getDescription())) {
+			if(!typeOfEventRepository.existsByDescription(typeOfEvent.getDescription())) {
 				typeOfEvent.setId(null == typeOfEventRepository.findMaxId() ? 0 : typeOfEventRepository.findMaxId() + 1);
 				typeOfEventRepository.save(typeOfEvent);
 				return "typeOfEvent created successfully";
@@ -38,7 +34,7 @@ public class TypeOfEventService {
 	
 	@Transactional
 	public String updateTypeOfEvent(TypeOfEvent typeOfEvent) {
-		if(typeOfEventRepository.existByDescription(typeOfEvent.getDescription())){
+		if(typeOfEventRepository.existsByDescription(typeOfEvent.getDescription())){
 			try {
 				List<TypeOfEvent> typesOfEvents = typeOfEventRepository.findByDescription(typeOfEvent.getDescription());
 				typesOfEvents.stream().forEach(e -> {
@@ -58,7 +54,7 @@ public class TypeOfEventService {
 	}
 	
 	@Transactional public String deleteTypeOfEvent(TypeOfEvent typeOfEvent) {
-		if(typeOfEventRepository.existByDescription(typeOfEvent.getDescription())) {
+		if(typeOfEventRepository.existsByDescription(typeOfEvent.getDescription())) {
 			try {
 				List<TypeOfEvent> typesOfEvents = typeOfEventRepository.findByDescription(typeOfEvent.getDescription());
 				typesOfEvents.stream().forEach(s -> {
