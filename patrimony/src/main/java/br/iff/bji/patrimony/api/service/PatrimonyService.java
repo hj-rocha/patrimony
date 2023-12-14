@@ -17,7 +17,7 @@ public class PatrimonyService {
 	public String createPatrimony(Patrimony patrimony) {
 		try {
 			if (!patrimonyRepository.existsByName(patrimony.getName())) {
-				patrimony.setId(null == patrimonyRepository.findMaxId() ? 0 : patrimonyRepository.findMaxId() + 1);
+				patrimony.setId(null == patrimonyRepository.findMaxId() ? 1 : patrimonyRepository.findMaxId() + 1);
 				patrimonyRepository.save(patrimony);
 				return "Patrimony record created successfully.";
 			} else {
@@ -53,19 +53,19 @@ public class PatrimonyService {
 
 	@Transactional
 	public String deletePatrimony(Patrimony patrimony) {
-		if (patrimonyRepository.existsByName(patrimony.getName())) {
+	//	if (patrimonyRepository.existsByName(patrimony.getName())) {
 			try {
-				List<Patrimony> patrimonys = patrimonyRepository.findByName(patrimony.getName());
-				patrimonys.stream().forEach(s -> {
-					patrimonyRepository.delete(s);
-				});
+				//List<Patrimony> patrimonys = patrimonyRepository.findByName(patrimony.getName());
+				//patrimonys.stream().forEach(s -> {
+					patrimonyRepository.deleteById(patrimony.getId());
+				//});
 				return "Patrimony record deleted successfully.";
 			} catch (Exception e) {
 				throw e;
 			}
 
-		} else {
-			return "Patrimony does not exist";
-		}
+		//} else {
+		//	return "Patrimony does not exist";
+		//}
 	}
 }

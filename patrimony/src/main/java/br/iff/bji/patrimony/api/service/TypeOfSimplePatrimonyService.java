@@ -17,7 +17,7 @@ public class TypeOfSimplePatrimonyService {
 	public String createTypeOfSimplePatrimony(TypeOfSimplePatrimony typeOfSimplePatrimony) {
 		try {
 			if (!typeOfSimplePatrimonyRepository.existsByDescription(typeOfSimplePatrimony.getDescription())) {
-				typeOfSimplePatrimony.setId(null == typeOfSimplePatrimonyRepository.findMaxId() ? 0 : typeOfSimplePatrimonyRepository.findMaxId() + 1);
+				typeOfSimplePatrimony.setId(null == typeOfSimplePatrimonyRepository.findMaxId() ? 1 : typeOfSimplePatrimonyRepository.findMaxId() + 1);
 				typeOfSimplePatrimonyRepository.save(typeOfSimplePatrimony);
 				return "TypeOfSimplePatrimony record created successfully.";
 			} else {

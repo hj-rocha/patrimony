@@ -13,7 +13,9 @@ public interface PatrimonyRepository extends JpaRepository<Patrimony, Integer> {
     public boolean existsByName(String name);
 
     public List<Patrimony> findByName(String name);
-
+    
+    public List<Patrimony> findByNameAndCountry(String name, String country);
+    
     @Query("select max(p.id) from Patrimony p")
     public Integer findMaxId();
 }

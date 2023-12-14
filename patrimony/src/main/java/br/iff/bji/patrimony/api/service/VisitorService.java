@@ -17,7 +17,7 @@ public class VisitorService {
 	public String createVisitor(Visitor visitor) {
 		try {
 			if (!visitorRepository.existsByCPF(visitor.getCPF())) {
-				visitor.setId(null == visitorRepository.findMaxId() ? 0 : visitorRepository.findMaxId() + 1);
+				visitor.setId(null == visitorRepository.findMaxId() ? 1 : visitorRepository.findMaxId() + 1);
 				visitorRepository.save(visitor);
 				return "Visitor record created successfully.";
 			} else {

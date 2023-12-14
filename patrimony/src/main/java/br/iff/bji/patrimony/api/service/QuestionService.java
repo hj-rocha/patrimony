@@ -17,7 +17,7 @@ public class QuestionService {
 	public String createQuestion(Question question) {
 		try {
 			if (!questionRepository.existsByDescription(question.getDescription())) {
-				question.setId(null == questionRepository.findMaxId() ? 0 : questionRepository.findMaxId() + 1);
+				question.setId(null == questionRepository.findMaxId() ? 1 : questionRepository.findMaxId() + 1);
 				questionRepository.save(question);
 				return "Question record created successfully.";
 			} else {
