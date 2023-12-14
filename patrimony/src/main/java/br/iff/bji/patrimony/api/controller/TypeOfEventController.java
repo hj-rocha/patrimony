@@ -30,7 +30,7 @@ public class TypeOfEventController {
 		return typeOfEventService.updateTypeOfEvent(typeOfEvent);
 	}
 
-	@RequestMapping(value = "updatetypeofevent", method = RequestMethod.DELETE)
+	@RequestMapping(value = "deletetypeofevent", method = RequestMethod.DELETE)
 	public String deleteTypeOfEvent(@RequestBody TypeOfEvent typeOfEvent) {
 		return typeOfEventService.deleteTypeOfEvent(typeOfEvent);
 	}

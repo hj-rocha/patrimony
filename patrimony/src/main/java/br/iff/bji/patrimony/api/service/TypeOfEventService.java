@@ -17,7 +17,7 @@ public class TypeOfEventService {
 	public String createTypeOfEvent(TypeOfEvent typeOfEvent ) {
 		try {
 			if(!typeOfEventRepository.existsByDescription(typeOfEvent.getDescription())) {
-				typeOfEvent.setId(null == typeOfEventRepository.findMaxId() ? 0 : typeOfEventRepository.findMaxId() + 1);
+				typeOfEvent.setId(null == typeOfEventRepository.findMaxId() ? 1 : typeOfEventRepository.findMaxId() + 1);
 				typeOfEventRepository.save(typeOfEvent);
 				return "typeOfEvent created successfully";
 			}else {
@@ -49,25 +49,25 @@ public class TypeOfEventService {
 				throw e;
 			}
 		} else {
-			return "Type of event does not exists in the database";
+			return "Type of event does not exists in the database.";
 		}
 	}
 	
-	@Transactional public String deleteTypeOfEvent(TypeOfEvent typeOfEvent) {
-		if(typeOfEventRepository.existsByDescription(typeOfEvent.getDescription())) {
-			try {
-				List<TypeOfEvent> typesOfEvents = typeOfEventRepository.findByDescription(typeOfEvent.getDescription());
-				typesOfEvents.stream().forEach(s -> {
-					//não teria que ter outra verificação aqui não? uma verificação pra saber se o id que você quer
-					//é igual ao que você está comparando
-					typeOfEventRepository.delete(s);
-				});
-				return "Type of Event record deleted successfully!";
-			} catch (Exception e){
-				throw e;
-			}
-		} else {
-			return "Type of event does not exists";
+	@Transactional
+	public String deleteTypeOfEvent(TypeOfEvent typeOfEvent) {
+		try {
+			//List<TypeOfEvent> typesOfEvents = typeOfEventRepository.findByDescription(typeOfEvent.getDescription());
+			//typesOfEvents.stream().forEach(s -> {
+				//não teria que ter outra verificação aqui não? uma verificação pra saber se o id que você quer
+				//é igual ao que você está comparando
+				//System.out.println(s.getDescription());
+				//typeOfEventRepository.delete(s);
+			typeOfEventRepository.deleteById(typeOfEvent.getId());
+			//});
+			return "Type of Event record deleted successfully.";
+		} catch (Exception e){
+			throw e;
 		}
+		
 	}
 }
