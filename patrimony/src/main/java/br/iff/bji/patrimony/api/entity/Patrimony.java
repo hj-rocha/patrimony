@@ -31,8 +31,8 @@ public class Patrimony {
     private int UNESCOClassification;
 
 	@ManyToOne
-	@JoinColumn(name = "typeOfSimplePatrimony_id")
-	private TypeOfSimplePatrimony typeOfSimplePatrimony;
+	@JoinColumn(name = "typeOfPatrimony_id")
+	private TypeOfPatrimony typeOfPatrimony;
 
     public Patrimony() {
     }
@@ -53,12 +53,12 @@ public class Patrimony {
 		this.name = name;
 	}
 
-	public TypeOfSimplePatrimony getTypeOfSimplePatrimony() {
-		return typeOfSimplePatrimony;
+	public TypeOfPatrimony getTypeOfPatrimony() {
+		return typeOfPatrimony;
 	}
 
-	public void setTypeOfSimplePatrimony(TypeOfSimplePatrimony typeOfSimplePatrimony) {
-		this.typeOfSimplePatrimony = typeOfSimplePatrimony;
+	public void setTypeOfPatrimony(TypeOfPatrimony typeOfPatrimony) {
+		this.typeOfPatrimony = typeOfPatrimony;
 	}
 
 	public String getCountry() {
