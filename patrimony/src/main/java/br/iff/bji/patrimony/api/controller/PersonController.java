@@ -1,7 +1,7 @@
-package com.pxp.SQLite.demo.controller;
+package br.iff.bji.patrimony.api.controller;
 
-import com.pxp.SQLite.demo.entity.Person;
-import com.pxp.SQLite.demo.service.PersonService;
+import br.iff.bji.patrimony.api.entity.Person;
+import br.iff.bji.patrimony.api.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
