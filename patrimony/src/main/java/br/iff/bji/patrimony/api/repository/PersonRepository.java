@@ -1,6 +1,6 @@
-package com.pxp.SQLite.demo.repository;
+package br.iff.bji.patrimony.api.repository;
 
-import com.pxp.SQLite.demo.entity.Person;
+import br.iff.bji.patrimony.api.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
