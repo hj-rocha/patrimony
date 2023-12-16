@@ -1,4 +1,4 @@
-package com.pxp.SQLite.demo.entity;
+package br.iff.bji.patrimony.api.entity;
 
 import java.time.LocalDate;
 
