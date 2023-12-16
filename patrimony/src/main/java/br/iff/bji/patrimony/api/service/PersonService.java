@@ -1,4 +1,4 @@
-package com.pxp.SQLite.demo.service;
+package br.iff.bji.patrimony.api.service;
 
 import com.pxp.SQLite.demo.entity.Person;
 import com.pxp.SQLite.demo.repository.PersonRepository;
