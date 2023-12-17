@@ -1,10 +1,14 @@
 package br.iff.bji.patrimony.api.service;
 
 import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import br.iff.bji.patrimony.api.entity.Event;
+import br.iff.bji.patrimony.api.entity.TypeOfEvent;
 import br.iff.bji.patrimony.api.repository.EventRepository;
 
 @Service
@@ -45,14 +49,15 @@ public class EventService {
 			
 			String updatedName = updatedEvent.getName();
 			String updatedDescription = updatedEvent.getDescription();
-			if((!existingEvent.getName().equals(updatedName)
-					|| !existingEvent.getDescription().equals(updatedDescription))
-					&& eventRepository.existsByName(updatedName)) {
-				return "Cannot update Event. Another Type";
+			TypeOfEvent updatedTypeOfEvent = updatedEvent.getTypeOfEvent();
+			if((!existingEvent.getName().equals(updatedName) && eventRepository.existsByName(updatedName))
+					|| (!existingEvent.getDescription().equals(updatedDescription) && eventRepository.existsByDescription(updatedDescription))) {
+				return "Cannot update Event. Already exists same Name or Description from Event.";
 			}
 			
 			existingEvent.setName(updatedName);
 			existingEvent.setDescription(updatedDescription);
+			existingEvent.setTypeOfEvent(updatedTypeOfEvent);
 			eventRepository.save(existingEvent);
 			
 			return "Event updated successfully.";

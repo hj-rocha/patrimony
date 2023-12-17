@@ -8,6 +8,7 @@ import br.iff.bji.patrimony.api.entity.Event;
 public interface EventRepository extends JpaRepository<Event, Integer>{
 	
 	public boolean existsByName(String name);
+	public boolean existsByDescription(String description);
 	
 	public List<Event> findByName(String name);
 	

@@ -46,6 +46,14 @@ public class Event {
 		return this.description;
 	}
 	
+	public void setTypeOfEvent(TypeOfEvent typeOfEvent) {
+		this.typeOfEvent = typeOfEvent;
+	}
+	
+	public TypeOfEvent getTypeOfEvent() {
+		return this.typeOfEvent;
+	}
+	
 	@Override
 	public String toString() {
         return "Student{" +
